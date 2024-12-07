@@ -71,6 +71,22 @@ impl State for GameState {
             self.player2.position.y += PADDLE_SPEED;
         }
 
+        if self.player1.position.y <= 0.0 {
+            self.player1.position.y = 0.0;
+        }
+
+        if self.player1.position.y + self.player1.height() >= WINDOW_HEIGHT {
+            self.player1.position.y = WINDOW_HEIGHT - self.player1.height();
+        }
+
+        if self.player2.position.y <= 0.0 {
+            self.player2.position.y = 0.0;
+        };
+
+        if self.player2.position.y + self.player2.height() >= WINDOW_HEIGHT {
+            self.player2.position.y = WINDOW_HEIGHT - self.player2.height();
+        }
+
         self.ball.position += self.ball.velocity;
 
         let player1_bounds = self.player1.bounds();
